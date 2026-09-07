@@ -2,7 +2,7 @@
   "algorithm": "sha256",
   "record_date": "2026-09-08",
   "files": {
-    ".github/workflows/lean.yml": "fbc4a1acb5be3cf24b964dfbcb63fc7c34a668032f113fd3c4a0d29f4f79fb18",
+    ".github/workflows/lean.yml": "0dc541a3b1a3f887ccb3dde2e0853b1a700d7be90948cfd2c1fe52f4c9a67aa5",
     ".github/workflows/verify.yml": "d1d27fed0bb6b728a466568dc97760a5798084d60b48d74bdc99c6eba4331459",
     ".gitignore": "b055d10ec27c02882ed788e207ca15775d35873aa888c667b58c48cfe7907d88",
     "MATHEMATICAL_AUDIT.md": "35e1bb9dae0fd3572b197c3e1884f9f52925fa93a9d57694c71d064a6c8d6813",

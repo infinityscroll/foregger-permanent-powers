@@ -30,7 +30,10 @@ jobs:
         with:
           python-version: "3.13"
       - name: Verify source integrity
-        run: python verify_package.py
+        run: |
+          python verify_package.py
+          # A setup failure must not upload the committed example as a fresh log.
+          rm -- lean/lean-check.log
       - name: Install pinned Lean toolchain
         uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596
         with:
