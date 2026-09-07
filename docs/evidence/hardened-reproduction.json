@@ -1,0 +1,61 @@
+{
+  "files_compared": 9,
+  "all_byte_identical": true,
+  "finite_diagnostics_not_formal_proof": true,
+  "files": [
+    {
+      "path": "src/fixtures.json",
+      "sha256": "baf36e9ff840475849a839cae67c8b633d19b6fefac035d35e00fde2614419bd",
+      "bytes": 53872,
+      "byte_identical": true
+    },
+    {
+      "path": "src/fixtures.txt",
+      "sha256": "ac88944ad27afb9515e0098c5ca10995368b71e055daab8edb1f11ac3f774c9a",
+      "bytes": 7584,
+      "byte_identical": true
+    },
+    {
+      "path": "outputs/python_exact.tsv",
+      "sha256": "3234e440034f5a33b216b9c9ce9f1325e4f25395ea4e162dad4cb19a179feb0c",
+      "bytes": 8180878,
+      "byte_identical": true
+    },
+    {
+      "path": "outputs/cpp_exact.tsv",
+      "sha256": "f4293cedf417c88f3e31d305e9e7913edfbe1ecd49f6198d8c140597d9ca2691",
+      "bytes": 8795671,
+      "byte_identical": true
+    },
+    {
+      "path": "outputs/python_exact.summary.json",
+      "sha256": "50f8272a60116f8d9396c9a6c925452c6bcb15b2b60f4ae7b85413ac917ff194",
+      "bytes": 105,
+      "byte_identical": true
+    },
+    {
+      "path": "outputs/independent_comparison.json",
+      "sha256": "9821696fb6fd7a5f2f5a2856249730e0b519ea8b6e93e50d7d65c631f5a3bec9",
+      "bytes": 137,
+      "byte_identical": true
+    },
+    {
+      "path": "outputs/local_gap_audit.json",
+      "sha256": "52e8e377417c255984e9d1d3a280cda3ec0968fe344206288a0b493a21413ade",
+      "bytes": 20091,
+      "byte_identical": true
+    },
+    {
+      "path": "outputs/hostile_tests.json",
+      "sha256": "24dcdc44f73ff246e34b1d3f12add9cc5ec1a9c1c378fef58f849d987dd8c35a",
+      "bytes": 1852,
+      "byte_identical": true
+    },
+    {
+      "path": "outputs/known_k2_calibration.json",
+      "sha256": "2c25cd9deb0e4f6cc83dfb9bf6310ba87caaa3469f1ca4275fc9725aa28ba991",
+      "bytes": 1071,
+      "byte_identical": true
+    }
+  ]
+}

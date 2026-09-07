@@ -1,0 +1,4 @@
+'ForeggerTwo.permanent_pow_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ForeggerTwo.sharp_stability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ForeggerTwo.stability_constant_optimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ForeggerTwo.permanent_pow_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]

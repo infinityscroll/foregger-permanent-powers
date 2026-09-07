@@ -1,0 +1,7 @@
+{
+  "cases": 90,
+  "derivatives": 450,
+  "hessians": 90,
+  "power_tests": 450,
+  "occupancy_tests": 90
+}

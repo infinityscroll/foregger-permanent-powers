@@ -1,0 +1,621 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\hypersetup{pdftitle={Uniform eventual decrease of permanents under matrix powers},pdfauthor={Research manuscript generated in this conversation},pdfsubject={Unreviewed proof of Foregger's 1978 per-k conjecture},pdfkeywords={permanent, doubly stochastic matrices, Foregger conjecture}}
+\setlist{nosep}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\per}{per}
+\DeclareMathOperator{\dist}{dist}
+\newcommand{\Om}{\Omega_n}
+\newcommand{\Fset}{\mathcal F_n}
+\newcommand{\fn}[1]{\left\|#1\right\|_{\mathrm F}}
+\newcommand{\op}[1]{\left\|#1\right\|_{2}}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\eps}{\varepsilon}
+\title{Uniform eventual decrease of permanents\\
+under matrix powers\\[5pt]\large A proof of Foregger's 1978 per-$k$ conjecture}
+\author{Research manuscript generated in this conversation}
+\date{7 September 2026\quad Version 1.0}
+\begin{document}
+\maketitle
+\begin{abstract}
+For every $n$, there is an integer $N(n)\ge2$ such that
+$\per(A^k)\le\per A$ for every nonnegative doubly stochastic $n\times n$
+matrix $A$ and every integer $k\ge N(n)$. Equality, for these exponents,
+holds precisely for uniform block-permutation matrices defined below.
+This proves the uniform-exponent conjecture attributed to Foregger in
+Minc's 1978 catalogue, and strengthens it to all sufficiently large
+exponents. The proof combines a categorical-occupancy bound for
+row-averaged matrices with a local estimate that remains valid for
+arbitrarily large powers. A compactness argument then handles the full
+Birkhoff polytope without a positive lower bound on its nonzero entries.
+A uniform quadratic stability consequence is also obtained.
+The global exponent is not made explicit.
+\end{abstract}
+\begin{center}\small
+\textbf{Review status.} This is an unreviewed mathematical manuscript, not
+an accepted publication or an externally certified priority claim.
+The general theorem is proved analytically; the accompanying exact
+computations are independent implementation-level diagnostics, not a
+formal-machine proof of the theorem.
+\end{center}
+
+\section{Target, prior results, and precise claim}
+Let $\Om$ denote the compact set of real nonnegative matrices with every
+row and every column summing to one. All powers in this manuscript are
+\emph{ordinary matrix powers}. Write
+\[
+ f(A)=\per A=\sum_{\sigma\in S_n}\prod_{i=1}^n a_{i,\sigma(i)}.
+\]
+Foregger's conjecture asks whether, for each $n$, there exists an integer
+$k(n)>1$, independent of $A$, for which
+\begin{equation}\label{eq:conjecture}
+ f(A^{k(n)})\le f(A)\qquad\text{for every }A\in\Om.
+\end{equation}
+The conjecture appears as Conjecture 17 in Minc's catalogue, and is
+restated in Cheon--Wanless \cite{CW} and Zhang \cite{Zhang}. Melnykova
+\cite[Section 4.1]{Mel} reports Foregger's original letter to Minc as
+dated 17 December 1977; the published catalogue is from 1978. The original
+letter and the original book page were not independently inspected here.
+The restriction $k>1$, made explicit in \cite{Mel}, is essential.
+
+Chang proved the $n=3$ case, with exponent eight; see \cite{Chang90} and
+the account in \cite{Mel}. Melnykova's Theorem 4.10 gives a common
+sufficiently-large exponent for matrices whose \emph{nonzero} entries
+are bounded below by a fixed $c>0$. Its threshold depends on $n$ and $c$.
+Her Corollary 4.11 gives a matrix-dependent exponent for every individual
+matrix. Removing dependence on a lower-entry bound or on $A$ is the
+issue addressed here. The present proof does not use either partial
+result as an unproved uniform assertion. In a dated primary discussion
+on 15 May 2022, Wanless again identified this general question as open
+\cite{MO}; that statement is not treated as exhaustive 2026 status evidence.
+
+\subsection{The exceptional matrices}
+Partition $[n]=C_1\sqcup\cdots\sqcup C_s$ into nonempty classes, put
+$m_a=|C_a|$, and let $\pi$ be a permutation of the classes satisfying
+$m_{\pi(a)}=m_a$. Define
+\begin{equation}\label{eq:Fdef}
+ F_{ij}=\begin{cases}1/m_a,&i\in C_a,\ j\in C_{\pi(a)},\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\end{equation}
+Let $\Fset$ be the finite collection of matrices obtainable this way.
+This definition uses a \emph{common partition of row and column labels};
+arbitrary independent row and column relabellings do not describe the
+same condition for matrix powers.
+
+Associated with this partition is the orthogonal averaging projection
+\begin{equation}\label{eq:Edef}
+ E_{ij}=\begin{cases}1/m_a,&i,j\in C_a,\\0,&\text{otherwise}.
+ \end{cases}
+\end{equation}
+It satisfies $E^2=E=E^{\mathsf T}$ and $EF=FE=F$. Also $F^k$ has the
+form \eqref{eq:Fdef} with $\pi$ replaced by $\pi^k$. Consequently,
+\begin{equation}\label{eq:pdef}
+ p:=f(F)=f(E)=\prod_{a=1}^s\frac{m_a!}{m_a^{m_a}}>0,
+ \qquad f(F^k)=p\quad(k\ge1).
+\end{equation}
+These matrices include permutations, $J_n$, direct sums of uniform
+blocks, and periodic cycles of uniform blocks; they are not all
+idempotent. Here $J_m$ means the $m\times m$ matrix with every entry
+$1/m$.
+
+\begin{theorem}\label{thm:main}
+For every positive integer $n$, there is $N(n)\ge2$ such that for every
+$A\in\Om$ and every integer $k\ge N(n)$,
+\[
+ f(A^k)\le f(A).
+\]
+Equality holds if and only if $A\in\Fset$.
+\end{theorem}
+
+The theorem compares every sufficiently large power with the
+\emph{original matrix}, not necessarily with the immediately preceding
+power. It is not a claim that $f(A^k)$ is monotone in $k$. The proof gives
+an explicit local cutoff $16n^2$, but does \emph{not} establish that this
+is a valid global cutoff.
+
+\section{A row-averaging bound with a monotone defect}
+Throughout the proof $\fn{\cdot}$ is the Frobenius norm and
+$\op{\cdot}$ the Euclidean operator norm. Every $A\in\Om$ is a
+Euclidean contraction: Jensen's inequality and the column sums give
+\[
+ \sum_i\left|\sum_j a_{ij}x_j\right|^2
+ \le\sum_{i,j}a_{ij}|x_j|^2=\sum_j|x_j|^2.
+\]
+The same statement holds for row vectors by transposition.
+
+Fix a partition and its projection $E$. For a doubly stochastic matrix
+$M$ with $EM=M$, define
+\begin{equation}\label{eq:variance}
+ V_E(M):=n-\sum_{a=1}^s\sum_{j=1}^n
+ \left(\sum_{i\in C_a}M_{ij}\right)^2.
+\end{equation}
+\begin{lemma}[Categorical occupancy]\label{lem:occupancy}
+For every $M\in\Om$ satisfying $EM=M$,
+\begin{equation}\label{eq:occupancybound}
+ f(M)\le p\left(1-\frac{V_E(M)}{2n^2}\right)\le p,
+ \qquad p=\prod_a\frac{m_a!}{m_a^{m_a}}.
+\end{equation}
+For a fixed $A\in\Om$, the sequence $V_E(EA^k)$ is nondecreasing.
+\end{lemma}
+\begin{proof}
+Rows of $M$ agree within each class. Put
+$y_{aj}=\sum_{i\in C_a}M_{ij}$, so $M_{ij}=y_{aj}/m_a$ for $i\in C_a$.
+For each column $j$, independently choose a class $a$ with probability
+$y_{aj}$. These are probabilities because $y_{aj}\ge0$ and
+$\sum_a y_{aj}=1$. Let $N_a$ be the number of columns assigned to class
+$a$. Its expectation is $\sum_j y_{aj}=m_a$.
+
+An assignment of columns with exactly $m_a$ columns in each class has
+$\prod_a m_a!$ row bijections contributing to the permanent. All such
+bijections for this assignment have the same product of matrix entries.
+Expanding the permanent therefore gives the exact identity
+\begin{equation}\label{eq:occupancyidentity}
+ \frac{f(M)}{p}=\mathbb P\{N_a=m_a\text{ for every }a\}.
+\end{equation}
+Independence across columns implies
+\[
+ \mathbb E\|N-m\|_2^2=\sum_{a,j}y_{aj}(1-y_{aj})=V_E(M).
+\]
+Since both $N$ and $m$ have nonnegative coordinates summing to $n$,
+$\|N-m\|_2^2\le2n^2$. It vanishes on the event in
+\eqref{eq:occupancyidentity}. Thus its expectation is at most
+$2n^2$ times the probability of the complementary event, proving
+\eqref{eq:occupancybound}.
+
+Let $u_a$ be the column indicator of $C_a$. Since $u_a^{\mathsf T}E=
+u_a^{\mathsf T}$,
+\[
+ V_E(EA^k)=n-\sum_a\|u_a^{\mathsf T}A^k\|_2^2.
+\]
+Right multiplication by $A$ does not increase any of these squared
+norms. This proves monotonicity.
+\end{proof}
+
+\section{Perturbations of a uniform block-permutation matrix}
+Fix $F\in\Fset$ with partition, $E$, and $p$ as above. In this section
+$n\ge2$. For $A\in\Om$, write
+\begin{equation}\label{eq:epsdelta}
+ X=A-F,\qquad \eps=\fn X,\qquad
+ \delta=\sum_{F_{ij}=0}A_{ij}.
+\end{equation}
+The quantity $\delta$ is the total mass leaking outside the support of
+$F$. Cauchy--Schwarz gives $0\le\delta\le n\eps$.
+
+\begin{lemma}[Tangent and leakage components]\label{lem:split}
+There is an orthogonal decomposition $X=Y+Z$ such that $Y$ is supported
+on $C_a\times C_{\pi(a)}$, has zero row and column sums in each such
+block, and
+\begin{equation}\label{eq:splitbounds}
+ EY=YE=0,\qquad
+ \eps^2=\fn Y^2+\fn Z^2,\qquad
+ \fn Z\le\sum_{i,j}|Z_{ij}|\le4\delta.
+\end{equation}
+If $\eps\le1/n$, then $F+Y\in\Om$.
+\end{lemma}
+\begin{proof}
+Orthogonally project each allowed block of $X$ onto the subspace with
+zero row and column sums, and put $Y=0$ elsewhere. In an allowed
+$m\times m$ block with row sums $r_i$, column sums $c_j$, and total $t$,
+\[
+ Y_{ij}=X_{ij}-\frac{r_i}{m}-\frac{c_j}{m}+\frac{t}{m^2}.
+\]
+This is the orthogonal projection, so the norm identity holds.
+The zero block sums give $EY=YE=0$.
+
+Every $r_i,c_j$ is nonpositive: it is minus the mass of $A$ outside the
+allowed block in the corresponding row or column. In each block,
+\[
+ \sum_{i,j}|Z_{ij}|
+ \le\sum_i|r_i|+\sum_j|c_j|+|t|=3(-t).
+\]
+Summing $-t$ over allowed blocks gives $\delta$. The entries of $Z=X$
+outside the allowed blocks are nonnegative and total $\delta$, proving
+the bound $4\delta$. Finally $\fn Y\le\eps$, so $\eps\le1/n$ keeps
+all allowed entries of $F+Y$ nonnegative; its row and column sums remain
+one.
+\end{proof}
+
+\subsection{Permanent derivatives and a lower bound for the starting matrix}
+Set
+\begin{equation}\label{eq:C}
+ C=C_n:=\frac{n^2(n-2)!}{2}.
+\end{equation}
+On $\Om$, each second partial derivative of $f$ has absolute value at
+most $(n-2)!$: it is either zero or the permanent of a submatrix with
+entries at most one. Since $\sum|H_{ij}|\le n\fn H$, the Hessian
+operator norm is at most $2C$. In particular, for a segment in $\Om$,
+\begin{equation}\label{eq:taylor2}
+ |f(M+D)-f(M)-Df_M(D)|\le C\fn D^2.
+\end{equation}
+For $n\ge3$ the third Taylor remainder in a direction $Y$ on such a
+segment is bounded by
+\[
+ \frac{n^3(n-3)!}{6}\fn Y^3\le C\fn Y^3.
+\]
+For $n=2$ the third remainder is zero.
+
+The permanental cofactor at an allowed position of $F$ equals $p$,
+whereas at a position outside its support it is zero. Therefore
+\begin{equation}\label{eq:linearper}
+ Df_F(X)=-p\delta,\qquad Df_F(Y)=0,\qquad Df_F(Z)=-p\delta.
+\end{equation}
+For a tangent block $Y_a$ of size $m_a>1$, direct expansion at $J_{m_a}$
+gives the quadratic coefficient
+\begin{equation}\label{eq:hessianper}
+ f(F+tY)=p+t^2p\sum_{a:m_a>1}
+ \frac{m_a}{2(m_a-1)}\fn{Y_a}^2+O(t^3).
+\end{equation}
+To verify the coefficient, the sum of $Y_{ij}Y_{h\ell}$ over distinct
+rows and columns equals $\fn{Y_a}^2$, because the row and column sums
+vanish. Passing from ordered to unordered row pairs introduces $1/2$;
+the complementary permanent equals $(m_a-2)!/m_a^{m_a-2}$.
+Dividing by $m_a!/m_a^{m_a}$ gives the displayed factor. Blocks of size
+one have no tangent directions, and cross-block linear products vanish.
+
+If $\eps\le1/n$ and $C\eps\le p/4$, the remainder bound shows
+\begin{equation}\label{eq:tangentlower}
+ f(F+Y)\ge p+\frac p4\fn Y^2.
+\end{equation}
+The segment $F+Y+tZ$, $0\le t\le1$, lies in $\Om$, and its distance
+from $F$ is at most $\eps$ by orthogonality. The Hessian bound and
+\eqref{eq:splitbounds} therefore give
+\[
+ |f(A)-f(F+Y)-Df_F(Z)|\le2C\eps\fn Z\le8C\eps\delta.
+\]
+If also $8C\eps\le p$ and $\delta\le1/4$, then
+\begin{align}
+ f(A)&\ge p-2p\delta+\frac p4\fn Y^2\notag\\
+ &\ge p-2p\delta+\frac p4\eps^2-4p\delta^2\notag\\
+ &\ge p-3p\delta+\frac p4\eps^2.\label{eq:startinglower}
+\end{align}
+
+\section{An estimate uniform in arbitrarily large powers}
+The difficulty is that $A^k$ need not stay near $F^k$ when $k$ is large.
+The following argument differentiates a \emph{fixed} power only, then
+uses a monotone quantity to cover all later powers.
+
+\begin{lemma}[Fixed-time growth of the mixing defect]\label{lem:mixing}
+For an integer $r\ge1$, set $g_r(A)=V_E(EA^r)$. Then
+\begin{equation}\label{eq:gderivative}
+ g_r(F+Y)=0,\qquad Dg_r(F)[X]=2r\delta.
+\end{equation}
+If $\eps\le1/n$ and $\eps\le1/(16nr)$, then
+\begin{equation}\label{eq:growth}
+ V_E(EA^k)\ge r\delta\qquad\text{for every }k\ge r.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The class indicators satisfy $u_a^{\mathsf T}F=u_{\pi(a)}^{\mathsf T}$
+and $u_a^{\mathsf T}Y=0$. Thus
+$u_a^{\mathsf T}(F+Y)^r=u_{\pi^r(a)}^{\mathsf T}$, proving the first
+identity in \eqref{eq:gderivative}.
+
+The derivative of $A^r$ at $F$ is
+\[
+ \mathcal D_r(X)=\sum_{j=0}^{r-1}F^jXF^{r-1-j}.
+\]
+For each summand, multiplication by the powers of $F$ carries allowed
+positions of $X$ to the support of $F^r$ and disallowed positions to its
+complement. This follows by following the class permutation $\pi$;
+the correspondence on classes is bijective. The multipliers are doubly
+stochastic, so the total mass carried from disallowed positions is
+exactly $\delta$. This remains valid when one of the powers is $F^0=I$.
+The derivative therefore has outside mass $r\delta$ and inside total
+$-r\delta$. Differentiating \eqref{eq:variance} at the deterministic
+class assignment of $F^r$ gives $Dg_r(F)[X]=2r\delta$.
+
+For the error estimate, let $U$ have rows $u_a^{\mathsf T}$; then
+$\fn U^2=n$ and $g_r(A)=n-\fn{UA^r}^2$. On $\Om$, the operator-norm
+bounds for the first and second derivatives of $A^r$ are respectively
+$r\fn H$ and $r(r-1)\fn H\fn K$. The product rule yields
+\[
+ |D^2g_r(A)[H,K]|\le4nr^2\fn H\fn K.
+\]
+Comparing along $F+Y+tZ$ and using $g_r(F+Y)=0$ consequently gives
+\begin{align*}
+ |g_r(A)-Dg_r(F)[Z]|
+ &\le4nr^2\eps\fn Z\le16nr^2\eps\delta.
+\end{align*}
+Also $Dg_r(F)[Y]=0$, so $Dg_r(F)[Z]=2r\delta$.
+For $\eps\le1/(16nr)$ the error is at most $r\delta$.
+This proves $g_r(A)\ge r\delta$. Lemma~\ref{lem:occupancy} makes the
+same lower bound valid for every later power, proving \eqref{eq:growth}.
+\end{proof}
+
+\begin{lemma}[Uniform suppression of non-averaged rows]\label{lem:fast}
+If $\eps\le1/2$, then for every integer $k\ge1$,
+\begin{equation}\label{eq:fast}
+ \fn{(I-E)A^k}\le8\delta+\eps^k.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:rowtay}
+ f(A^k)\le f(EA^k)+C\fn{(I-E)A^k}^2.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put $D_k=(I-E)A^k$, $R=(I-E)AE$, and $T=(I-E)A(I-E)$.
+Since $(I-E)F=F(I-E)=0$ and $YE=0$,
+\[
+ \fn R=\fn{(I-E)ZE}\le4\delta,
+ \qquad\op T\le\eps,
+ \qquad\fn{D_1}\le\eps.
+\]
+The exact recurrence is $D_k=RA^{k-1}+TD_{k-1}$. Contraction of powers
+of $A$ gives
+\[
+ \fn{D_k}\le4\delta\sum_{j=0}^{k-2}\eps^j+\eps^k
+ \le8\delta+\eps^k.
+\]
+For $M=EA^k$, the rows within a class are equal, so their permanental
+cofactor rows are equal as well. Since $ED_k=0$, the sum of the rows of
+$D_k$ within each class is zero; hence $Df_M(D_k)=0$. Both $M$ and
+$M+D_k=A^k$ belong to $\Om$. Applying \eqref{eq:taylor2} proves
+\eqref{eq:rowtay}.
+\end{proof}
+
+\begin{theorem}[Explicit uniform local gap]\label{thm:local}
+For $n\ge2$, $F\in\Fset$, and its associated $p$, set
+\begin{equation}\label{eq:radius}
+ r=16n^2,\qquad C=\frac{n^2(n-2)!}{2},\qquad
+ \rho_F=\min\left\{\frac1{16nr},\frac{p}{128Cn}\right\}.
+\end{equation}
+For every $A\in\Om$ with $\eps=\fn{A-F}\le\rho_F$ and every integer
+$k\ge r$,
+\begin{equation}\label{eq:localgap}
+ f(A)-f(A^k)\ge4p\delta+\frac p8\eps^2,
+ \qquad \delta=\sum_{F_{ij}=0}A_{ij}.
+\end{equation}
+In particular the inequality is strict unless $A=F$.
+\end{theorem}
+\begin{proof}
+The radius guarantees all hypotheses used in
+\eqref{eq:startinglower}, including $\delta\le n\eps\le p/(128C)\le1/4$.
+It also guarantees the hypotheses of Lemmas~\ref{lem:mixing} and
+\ref{lem:fast}. Combining those lemmas with
+\eqref{eq:occupancybound} gives, for every $k\ge r$,
+\begin{align*}
+ f(A^k)&\le p-\frac{pr\delta}{2n^2}
+       +C(8\delta+\eps^k)^2\\
+ &\le p-8p\delta+128C\delta^2+2C\eps^{2k}.
+\end{align*}
+The first error term is at most $p\delta$. Since
+$\eps\le p/(128Cn)\le p/(16C)$, $\eps\le1$, and $2k-2\ge1$,
+the second error term is at most $(p/8)\eps^2$. Therefore
+\[
+ f(A^k)\le p-7p\delta+\frac p8\eps^2.
+\]
+Subtract this from \eqref{eq:startinglower} to obtain
+\eqref{eq:localgap}. No bound on $k\eps$ or $k\delta$ was imposed.
+\end{proof}
+
+\section{The global compactness argument}
+We use the classical van der Waerden--Falikman--Egorychev theorem:
+\begin{equation}\label{eq:vdw}
+ f(T)\ge\frac{m!}{m^m}\quad(T\in\Omega_m),
+ \qquad\text{with equality exactly when }T=J_m.
+\end{equation}
+The lower bound and its equality characterization are existing results,
+not ingredients claimed as new here; see \cite{Gurvits} and its
+references to Falikman and Egorychev.
+
+\begin{lemma}[Limits of powers near a fixed matrix]\label{lem:global}
+For any $A_*\in\Om$, there is a block-averaging projection $E$ as in
+\eqref{eq:Edef} such that:
+\begin{enumerate}[label=(\roman*)]
+\item $f(A_*)\ge f(E)$, with equality exactly when $A_*\in\Fset$;
+\item if $A_j\to A_*$, $k_j\to\infty$, and $A_j^{k_j}\to B$, with
+$A_j\in\Om$, then $EB=B$ and consequently $f(B)\le f(E)$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Recall the standard finite Markov-chain cyclic decomposition, also used
+for this problem in \cite{Mel}. A doubly stochastic matrix has no
+transient states: an isolated sink strongly connected component in its
+directed graph can have no incoming mass, by equality of total row and
+column sums; remove such components successively. Thus, after a
+\emph{simultaneous} row/column permutation, $A_*$ is a direct sum of
+irreducible doubly stochastic matrices.
+
+Within an irreducible component of period $d$, split into its cyclic
+classes. Transitions go from each class to the next. The total outgoing
+mass of one class equals its size, and the incoming mass of the next
+equals that next class's size. These sizes are therefore all equal.
+Each transition block $T_a$ between consecutive classes is square and
+doubly stochastic. The usual convergence theorem for an irreducible
+aperiodic finite chain, applied to the $d$-step restrictions, shows that
+for a common multiple $L$ of the periods,
+\begin{equation}\label{eq:Markovlimit}
+ A_*^{Lt}\longrightarrow E\qquad(t\to\infty),
+\end{equation}
+where $E$ averages within every cyclic class. This is an orthogonal
+projection because the stationary distribution is uniform.
+
+Every perfect matching of the support must match each row class to
+its unique succeeding column class. Hence the permanent factorizes as
+$\prod_a f(T_a)$. Applying \eqref{eq:vdw} block by block gives
+$f(A_*)\ge\prod_a m_a!/m_a^{m_a}=f(E)$. Equality forces every
+$T_a=J_{m_a}$, exactly the definition of $\Fset$.
+
+For the varying-matrix limit, fix an integer $t$. For all sufficiently
+large $j$, $k_j\ge Lt$. Euclidean contraction implies
+\[
+ \op{(I-E)A_j^{k_j}}
+ \le\op{(I-E)A_j^{Lt}}.
+\]
+Taking $j\to\infty$, then $t\to\infty$ in
+\eqref{eq:Markovlimit}, gives $(I-E)B=0$. The limit $B$ is doubly
+stochastic, so Lemma~\ref{lem:occupancy} gives $f(B)\le f(E)$.
+There is no assumption that $k_j$ is divisible by $L$, and no assumption
+of convergence uniform over the matrices $A_j$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For $n=1$ the assertion is immediate. Suppose for some fixed $n\ge2$
+that no eventual threshold with the claimed strictness exists.
+Then there are integers $k_j\to\infty$ and matrices
+$A_j\in\Om\setminus\Fset$ such that
+\[
+ f(A_j^{k_j})\ge f(A_j).
+\]
+By compactness, pass to a subsequence with $A_j\to A_*$ and
+$A_j^{k_j}\to B$. Lemma~\ref{lem:global} and continuity give
+\[
+ f(A_*)\le f(B)\le f(E)\le f(A_*).
+\]
+All inequalities are equalities. Thus $A_*=F\in\Fset$.
+For large $j$, $\fn{A_j-F}\le\rho_F$ and $k_j\ge16n^2$.
+Since $A_j\ne F$, Theorem~\ref{thm:local} then gives
+$f(A_j^{k_j})<f(A_j)$, a contradiction. The exceptional matrices attain
+equality for every positive exponent by \eqref{eq:pdef}.
+\end{proof}
+
+\section{A uniform quadratic stability consequence}
+The same argument provides more than a strict inequality.
+\begin{corollary}\label{cor:stability}
+For every $n$ there are $c_n>0$ and $N_n\ge2$ such that for every
+$A\in\Om$ and every integer $k\ge N_n$,
+\begin{equation}\label{eq:globalstability}
+ f(A)-f(A^k)\ge c_n\,\dist_{\mathrm F}(A,\Fset)^2.
+\end{equation}
+Neither the global $c_n$ nor $N_n$ is made explicit here.
+\end{corollary}
+\begin{proof}
+If this were false for a fixed $n$, choose $k_j\ge j$ and $A_j\in\Om$
+with
+\[
+ f(A_j)-f(A_j^{k_j})<\frac1j\dist_{\mathrm F}(A_j,\Fset)^2.
+\]
+No $A_j$ is exceptional. Pass to compact limits as before. The squared
+distances are bounded, so the limiting permanent gap is nonpositive.
+Lemma~\ref{lem:global} again forces the limit $A_*=F\in\Fset$.
+For all sufficiently large $j$, Theorem~\ref{thm:local} gives
+\[
+ f(A_j)-f(A_j^{k_j})
+ \ge\frac p8\fn{A_j-F}^2
+ \ge\frac p8\dist_{\mathrm F}(A_j,\Fset)^2,
+\]
+contradicting $1/j<p/8$. For $n=1$ the distance vanishes and the
+assertion is trivial.
+\end{proof}
+
+\section{Interpretation and scope}
+The permanent of a transition matrix $A$ is the probability that $n$
+independent walkers, started one at each of the $n$ states, occupy
+\emph{distinct} states after one step. The corresponding probability
+after $k$ steps is $f(A^k)$. Theorem~\ref{thm:main} says that, under
+double stochasticity, every sufficiently late time has probability no
+larger than the one-step probability, with a threshold depending only
+on $n$.
+
+The stronger assertion with $k=2$ is already false. Van Name's published
+2022 example \cite{MO} is
+\[
+ A=\frac12\begin{pmatrix}
+ 1&0&1&0\\0&0&1&1\\1&1&0&0\\0&1&0&1
+ \end{pmatrix},\qquad
+ f(A)=\frac18<\frac9{64}=f(A^2).
+\]
+This example is included only as an attributed scope calibration, not
+as a new counterexample. It is checked by direct permutation summation
+and Ryser inclusion--exclusion in the package.
+
+This is not a uniform mixing-time theorem. For example,
+$A_\eta=(1-\eta)I+\eta J_n$ satisfies
+$A_\eta^k=J_n+(1-\eta)^k(I-J_n)$, so convergence can be arbitrarily
+slow as $\eta\downarrow0$. The monotone defect in
+Lemma~\ref{lem:occupancy}, rather than a uniform mixing estimate, is
+what makes the proof uniform.
+
+The theorem applies to all real nonnegative doubly stochastic matrices,
+including reducible, periodic, singular, irrational, and boundary
+matrices. It does not extend the assertion to arbitrary row-stochastic,
+complex, or signed matrices. It does not settle the distinct
+Foregger--Sinkhorn tie-point problem, whose 2026 counterexample is due
+to Lavi \cite{Lavi}, or the separate convex-mixture inequalities also
+associated with Foregger's name.
+
+\section{Exact diagnostics and review status}
+The accompanying Python and C++ implementations independently test the
+identities underlying the proof. Python uses subset dynamic programming
+for permanents and dual-number binary exponentiation for power
+derivatives. C++ uses Ryser inclusion--exclusion, a sequential recurrence
+for those derivatives, explicit cofactor sums for the permanent Hessian,
+and a block-matrix projection rather than row/column-mean subtraction.
+The occupancy identity is checked by categorical count dynamic
+programming in Python and direct assignment recursion in C++.
+
+On the common 90 fixtures in dimensions two through seven, the two
+implementations agree on 4,500 exact rational fields in 1,080 records.
+They check 450 mixing derivatives, 90 tangent Hessians, 90 occupancy
+identities and 450 specified powers. The fixture family is explicitly
+defined; it is \emph{not} an exhaustive enumeration of doubly stochastic
+matrices. Of the 90 fixtures, 69 are default fixtures that need not lie inside
+the very conservative radius \eqref{eq:radius}; the other 21 are
+radius-controlled fixtures. Their 42 late-power checks satisfy the explicit local gap, including exponents $16n^2+1$.
+Seventeen deliberate mutations are rejected by the diagnostic guards. Finite checks neither prove the universal
+quantifiers nor supply the unspecified global threshold.
+
+All mathematical computations use integers or rational numbers. No
+floating-point experiment, numerical spectral tolerance, or random
+confidence statement is a premise of the proof. The initial fixture
+selection is deterministic with a recorded seed; randomness only chooses
+diagnostic examples.
+
+The proof and code were produced and audited within one assistant
+session. There has been no external specialist review, independent
+institutional replication, or formal proof-assistant verification.
+The dated primary-source search found no earlier publication of the
+specific uniform theorem or proof, but cannot exclude unindexed or
+private concurrent work. The bibliography and access limitations are
+recorded separately in \texttt{sources/prior\_art.md}.
+
+\begin{thebibliography}{9}
+\bibitem{Minc} H. Minc, \emph{Permanents}, 1978, Conjecture 17.
+Original attribution and catalogue location checked through
+\cite{CW,Mel,Zhang}; the original page was not independently accessed.
+\bibitem{CW} G.-S. Cheon and I. M. Wanless,
+An update on Minc's survey of open problems involving permanents,
+\emph{Linear Algebra and its Applications} \textbf{403} (2005), 314--342.
+\href{https://doi.org/10.1016/j.laa.2005.02.030}{doi:10.1016/j.laa.2005.02.030}.
+Author-hosted PDF inspected, especially p.~326, Conjecture 17.
+\bibitem{Mel} K. Melnykova, \emph{Notes on Foregger's Conjecture},
+M.Sc. thesis, University of Manitoba, 2012.
+Official repository PDF inspected, especially Chapter 4 and
+Theorem 4.10. Bibliographic year verified from the thesis front matter.
+\bibitem{Chang90} D. K. Chang, On two permanental conjectures,
+\emph{Linear and Multilinear Algebra} \textbf{26} (1990), 207--213.
+Results attributed through \cite{CW,Mel,Zhang}; full original article
+not independently inspected.
+\bibitem{Zhang} F. Zhang, An update on a few permanent conjectures,
+\emph{Special Matrices} \textbf{4} (2016), 305--316.
+\href{https://doi.org/10.1515/spma-2016-0030}{doi:10.1515/spma-2016-0030};
+\href{https://arxiv.org/abs/1608.02844}{arXiv:1608.02844}.
+\bibitem{Gurvits} L. Gurvits, Van der Waerden/Schrijver--Valiant like
+conjectures and stable (aka hyperbolic) homogeneous polynomials:
+one theorem for all,
+\href{https://arxiv.org/abs/0711.3496}{arXiv:0711.3496}, version 2.
+Introduction states the van der Waerden bound and unique equality case,
+crediting Falikman and Egorychev; an independent polynomial proof is given.
+\bibitem{MO} J. Van Name (8 May 2022) and I. M. Wanless (15 May 2022),
+answers to ``On permanent of a square of a doubly stochastic matrix,''
+\href{https://mathoverflow.net/questions/422029/on-permanent-of-a-square-of-a-doubly-stochastic-matrix}{MathOverflow question 422029}.
+Original, dated author discussion, not a peer-reviewed article.
+Van Name supplies the $k=2$ counterexample; Wanless states the distinct
+uniform-exponent problem as open in his account.
+\bibitem{Lavi} Y. Lavi, A counterexample to the Foregger--Sinkhorn
+tie-point conjecture, 13 August 2026,
+\href{https://arxiv.org/abs/2608.13025}{arXiv:2608.13025}.
+A different conjecture; not evidence that the powers problem was settled.
+\end{thebibliography}
+\end{document}

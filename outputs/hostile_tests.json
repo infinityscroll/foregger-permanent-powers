@@ -1,0 +1,84 @@
+{
+  "mutations_rejected": 17,
+  "rational_equivalence_control": "accepted",
+  "tests": [
+    {
+      "test": "bad total dimension",
+      "python": "rejected",
+      "cpp": "rejected"
+    },
+    {
+      "test": "nonpositive block size",
+      "python": "rejected",
+      "cpp": "rejected"
+    },
+    {
+      "test": "duplicate class image",
+      "python": "rejected",
+      "cpp": "rejected"
+    },
+    {
+      "test": "unequal block-size interchange",
+      "python": "rejected",
+      "cpp": "rejected"
+    },
+    {
+      "test": "zero parameter denominator",
+      "python": "rejected",
+      "cpp": "rejected"
+    },
+    {
+      "test": "negative parameter",
+      "python": "rejected",
+      "cpp": "rejected"
+    },
+    {
+      "test": "parameter exceeds one",
+      "python": "rejected",
+      "cpp": "rejected"
+    },
+    {
+      "test": "negative mixture weight",
+      "python": "rejected",
+      "cpp": "rejected"
+    },
+    {
+      "test": "non-bijective point mapping",
+      "python": "rejected",
+      "cpp": "rejected"
+    },
+    {
+      "test": "truncated fixture",
+      "cpp": "rejected"
+    },
+    {
+      "test": "coefficient changed",
+      "comparator_both_orders": "rejected"
+    },
+    {
+      "test": "label changed",
+      "comparator_both_orders": "rejected"
+    },
+    {
+      "test": "single extra line",
+      "comparator_both_orders": "rejected"
+    },
+    {
+      "test": "single missing line",
+      "comparator_both_orders": "rejected"
+    },
+    {
+      "test": "missing field",
+      "comparator_both_orders": "rejected"
+    },
+    {
+      "test": "zero denominator",
+      "comparator_both_orders": "rejected"
+    },
+    {
+      "test": "column sums not one",
+      "domain_guard": "rejected"
+    }
+  ],
+  "audit_correction": "Comparator changed from zip to zip_longest to detect a single extra trailing line."
+}

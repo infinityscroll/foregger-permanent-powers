@@ -1,0 +1,19 @@
+{
+  "review_date": "2026-09-08",
+  "platform": "macOS, arm64, Darwin 25.6.0",
+  "python": "CPython 3.12.14",
+  "compiler": "Apple clang 21.0.0 (clang-2100.1.1.101)",
+  "sdk": "macOS 26.5",
+  "boost": "1.85.0",
+  "boost_archive_sha256": "7009fe1faa1697476bdc7027703a2badb84e849b7b0baad5086b087b971f8617",
+  "boost_metadata_source": "https://archives.boost.io/release/1.85.0/source/boost_1_85_0.tar.bz2.json",
+  "arithmetic": "arbitrary-precision integers and exact rational numbers",
+  "local_compiler_adaptation": "Explicit SDK and C++ standard-library include directory; Boost included as system headers. Original source unchanged for the original-package run.",
+  "hardening_sanitizers": ["address", "undefined"],
+  "original_manifest_entries_verified": 25,
+  "original_regenerated_files_byte_identical": 9,
+  "hardened_regenerated_files_byte_identical": 9,
+  "new_hardening_regressions": 15,
+  "additional_python_tests": 35,
+  "scope": "Exact computational reproduction and regression evidence; not external mathematical peer review or a universal formal proof."
+}

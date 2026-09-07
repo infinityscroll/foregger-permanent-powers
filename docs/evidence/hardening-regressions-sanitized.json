@@ -1,0 +1,68 @@
+{
+  "additional_regressions_passed": 15,
+  "cpp_crashes_do_not_count_as_rejection": true,
+  "tests": [
+    {
+      "normal_validation_exit": 1,
+      "test": "positive out-of-range class image"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "negative class image"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "empty fixture file"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "nonnumeric count header"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "truncated fixture header"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "truncated partition"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "truncated class permutation"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "truncated rational parameters"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "truncated mixture length"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "truncated point permutation"
+    },
+    {
+      "normal_validation_exit": 1,
+      "test": "oversized partition entry"
+    },
+    {
+      "local_audit": "rejected",
+      "test": "duplicated records replacing all required local powers"
+    },
+    {
+      "local_audit": "rejected",
+      "test": "missing local power"
+    },
+    {
+      "local_audit": "rejected",
+      "test": "unexpected local exponent"
+    },
+    {
+      "local_audit": "rejected",
+      "test": "duplicate fixture ID"
+    }
+  ],
+  "valid_local_fixtures": 21,
+  "valid_local_gap_checks": 42
+}

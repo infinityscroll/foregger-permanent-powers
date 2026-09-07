@@ -1,0 +1,13 @@
+{
+  "record_date": "2026-09-07",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "python_implementation": "CPython",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "boost": "1.83",
+  "latex": "pdfTeX 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian)",
+  "arithmetic": "arbitrary-precision integers and exact rational numbers",
+  "external_python_dependencies": [],
+  "external_review": false,
+  "proof_assistant_verification": false
+}

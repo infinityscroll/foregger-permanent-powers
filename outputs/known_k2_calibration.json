@@ -1,0 +1,65 @@
+{
+  "attribution": "Joseph Van Name, MathOverflow answer, 8 May 2022",
+  "source_question": "https://mathoverflow.net/questions/422029/on-permanent-of-a-square-of-a-doubly-stochastic-matrix",
+  "novelty": "Previously public example; not a discovery in this package.",
+  "matrix": [
+    [
+      "1/2",
+      "0",
+      "1/2",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "1/2",
+      "1/2"
+    ],
+    [
+      "1/2",
+      "1/2",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "1/2",
+      "0",
+      "1/2"
+    ]
+  ],
+  "matrix_squared": [
+    [
+      "1/2",
+      "1/4",
+      "1/4",
+      "0"
+    ],
+    [
+      "1/4",
+      "1/2",
+      "0",
+      "1/4"
+    ],
+    [
+      "1/4",
+      "0",
+      "1/2",
+      "1/4"
+    ],
+    [
+      "0",
+      "1/4",
+      "1/4",
+      "1/2"
+    ]
+  ],
+  "permanent": "1/8",
+  "permanent_of_square": "9/64",
+  "increase": "1/64",
+  "routes": [
+    "direct sum over all permutations",
+    "Ryser inclusion-exclusion"
+  ],
+  "scope": "Rules out a universal k=2 and stepwise monotonicity, not the eventual-exponent theorem."
+}

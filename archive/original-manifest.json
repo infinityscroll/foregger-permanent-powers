@@ -1,0 +1,31 @@
+{
+  "algorithm": "sha256",
+  "record_date": "2026-09-07",
+  "files": {
+    "MATHEMATICAL_AUDIT.md": "35e1bb9dae0fd3572b197c3e1884f9f52925fa93a9d57694c71d064a6c8d6813",
+    "README.md": "b5988f7d506bec8f9e9c9680bef3d9c2238c0705398e7e1b599c0bda675dd85d",
+    "environment.json": "6fc9d695638630b7843c84632de911e0dd5fcb5895dd461b69f2840fef0f2281",
+    "outputs/cpp_exact.tsv": "f4293cedf417c88f3e31d305e9e7913edfbe1ecd49f6198d8c140597d9ca2691",
+    "outputs/hostile_tests.json": "24dcdc44f73ff246e34b1d3f12add9cc5ec1a9c1c378fef58f849d987dd8c35a",
+    "outputs/independent_comparison.json": "9821696fb6fd7a5f2f5a2856249730e0b519ea8b6e93e50d7d65c631f5a3bec9",
+    "outputs/known_k2_calibration.json": "2c25cd9deb0e4f6cc83dfb9bf6310ba87caaa3469f1ca4275fc9725aa28ba991",
+    "outputs/local_gap_audit.json": "52e8e377417c255984e9d1d3a280cda3ec0968fe344206288a0b493a21413ade",
+    "outputs/python_exact.summary.json": "50f8272a60116f8d9396c9a6c925452c6bcb15b2b60f4ae7b85413ac917ff194",
+    "outputs/python_exact.tsv": "3234e440034f5a33b216b9c9ce9f1325e4f25395ea4e162dad4cb19a179feb0c",
+    "proof.pdf": "5e5ef1a982a72e5319e1ed73d15b53e0acfbcd52d04aa6fca4bdd993a2f6daed",
+    "proof.tex": "4e9496b12ec12c7e9f4660d39c35f015ea5aba090f148b3363709d1d3eab063a",
+    "reproduce.sh": "7a3807d1d9c38193616dd16717fbcf1ca59a7a86a6de078cee4adb414f2d9ef5",
+    "sources/prior_art.md": "af48cba07d066414258fcf89b9ca0319391b8dbccb4935c97950cda30dc25741",
+    "sources/query_log.txt": "a1eb1090132f18da75f9bf56f40b1285b97443dc924f51a3efda583ce2dde8e9",
+    "src/audit_cpp.cpp": "d033b1356d81f0807bf18bb0ae77dce5c889614df73456d00783356f8d7a00b1",
+    "src/audit_local.py": "00e75e6714958e5a6900367e81c1a52d364de1ddb87cd91772ce10dfda1de8ae",
+    "src/audit_python.py": "e437338f3c689b888a61ad4e1224aaf6aa33b6fa905282283595c313a2d7e057",
+    "src/calibration.py": "936847f48e845d195484477f807516f886febc78fc2ab2d970bacdb17ef7a208",
+    "src/compare_outputs.py": "03baddd5fb6a31fc6d5adc13736620943dd6e90c71dba5b4a8719e6676dc3d62",
+    "src/fixtures.json": "baf36e9ff840475849a839cae67c8b633d19b6fefac035d35e00fde2614419bd",
+    "src/fixtures.txt": "ac88944ad27afb9515e0098c5ca10995368b71e055daab8edb1f11ac3f774c9a",
+    "src/hostile_tests.py": "047d4a114e5402798f8a25430e1d13dde735f398350771145d49822cfcd382a0",
+    "verify.sh": "4cef2a8504bd05033019b6e86deb8ea1fd3d35f9b3ab660f6c9c4f98b4392db2",
+    "verify_package.py": "afe70245c9a8184e7fe858ab56e43a8ffd4912d78349f06bb2fef317bb121522"
+  }
+}
