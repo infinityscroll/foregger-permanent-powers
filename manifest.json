@@ -33,7 +33,7 @@
     "lean/SEMANTIC_REVIEW.md": "2b560e78efcbc426621355d75763bb6e401f2d59d0965e7e945f5b63bc983c21",
     "lean/audit_log.py": "4b222f1028d628d07290319dbfec2d54e33c772ab096b60d244a145ab8cb559b",
     "lean/cache_imports.py": "47c5d9188a20689d09a6f7969b9335a8c7c562c811c9670c2b6074c50d042444",
-    "lean/lake-manifest.json": "9f72c9ce29e442ca008d0d71577eb50f61e8ccb0cd6e0c20ffb5f4366bc1b592",
+    "lean/lake-manifest.json": "3a9faee47d6c6f870aab9f4559d34d145e29ed960aa5c794ca0ebb121abfeb41",
     "lean/lakefile.toml": "9d7fac1451c398613233ec0f339aafa8a9ef8a581e2b8f2271161bce890fbe91",
     "lean/lean-check.log": "6870faffc5580a3e6d1275b4638eaf137ddaedc8f30432d7635659f42b02609d",
     "lean/lean-toolchain": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
